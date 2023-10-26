@@ -3,7 +3,7 @@ from sys import exit
 
 pygame.init()
 screen = pygame.display.set_mode((800,600))
-pygame.display.set_caption('Stupid Choices')
+pygame.display.set_caption('Stupid Choices aaaaaaaaaaa')
 clock = pygame.time.Clock()
 
 sky_surface = pygame.image.load('Sky.png').convert()
