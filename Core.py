@@ -23,6 +23,7 @@ ground_surface = pygame.transform.scale(ground_surface,(2000,200))
 
 #texture du Player
 player_surface = pygame.image.load('Skin-R.png').convert_alpha()
+player_surface = pygame.transform.scale(player_surface,(100,100))
 
 #position x et y du Player
 pl_x_pos = 400
@@ -41,18 +42,19 @@ while True:
     #va à droite
     if pressed[pygame.K_d] or pressed[pygame.K_RIGHT]:
         player_surface = pygame.image.load('Skin-R.png').convert_alpha()
+        player_surface = pygame.transform.scale(player_surface,(100,100))
         pl_x_pos+=2
         
     #va a gauche
     if pressed[pygame.K_a] or pressed[pygame.K_LEFT]:
-        
         player_surface = pygame.image.load('Skin-L.png').convert_alpha()
+        player_surface = pygame.transform.scale(player_surface,(100,100))
         pl_x_pos-=2
 
     #va en haut
     if pressed[pygame.K_w] or pressed[pygame.K_UP]:
-        if pl_y_pos<=350:
-            pl_y_pos=350
+        if pl_y_pos<=360:
+            pl_y_pos=360
         else:
             pl_y_pos-=1
 
