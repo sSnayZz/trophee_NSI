@@ -1,4 +1,5 @@
 import pygame 
+from random import randint
 from sys import exit
 
 #initiation du module Pygame
@@ -18,7 +19,7 @@ skynight_surface = pygame.transform.scale(skynight_surface,(800,600))
 
 #texture du 'sol' pour le Player
 ground_surface = pygame.image.load('Sol-jour.png').convert_alpha()
-ground_surface = pygame.transform.scale(ground_surface,(800,600))
+ground_surface = pygame.transform.scale(ground_surface,(2000,200))
 
 #texture du Player
 player_surface = pygame.image.load('Player.png').convert_alpha()
@@ -37,18 +38,23 @@ while True:
         
     #controles des mouvements x y du Player
     pressed = pygame.key.get_pressed()
+
+    #va à droite
     if pressed[pygame.K_d] or pressed[pygame.K_RIGHT]:
         pl_x_pos+=2
         
+    #va a gauche
     if pressed[pygame.K_a] or pressed[pygame.K_LEFT]:
         pl_x_pos-=2
 
+    #va en haut
     if pressed[pygame.K_w] or pressed[pygame.K_UP]:
-        if pl_y_pos<=410:
-            pl_y_pos=410
+        if pl_y_pos<=350:
+            pl_y_pos=350
         else:
             pl_y_pos-=1
 
+    #va en bas
     if pressed[pygame.K_s] or pressed[pygame.K_DOWN]:
         if pl_y_pos>=500:
             pl_y_pos=500
@@ -56,7 +62,7 @@ while True:
             pl_y_pos+=1
 
     screen.blit(skyday_surface,(0,0))
-    screen.blit(ground_surface,(0,100))
+    screen.blit(ground_surface,(0,450))
     screen.blit(player_surface,(pl_x_pos,pl_y_pos))
     
 
