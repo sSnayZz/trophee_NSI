@@ -17,7 +17,7 @@ skynight_surface = pygame.image.load('Paysage-nuit.png').convert()
 skynight_surface = pygame.transform.scale(skynight_surface,(800,600))
 
 #texture du 'sol' pour le Player
-ground_surface = pygame.image.load('Ground.png').convert_alpha()
+ground_surface = pygame.image.load('Sol-jour.png').convert_alpha()
 ground_surface = pygame.transform.scale(ground_surface,(800,600))
 
 #texture du Player
