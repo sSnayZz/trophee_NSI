@@ -6,8 +6,10 @@ screen = pygame.display.set_mode((800,600))
 pygame.display.set_caption('Mein Gott')
 clock = pygame.time.Clock()
 
-sky_surface = pygame.image.load('Sky.png').convert()
-sky_surface = pygame.transform.scale(sky_surface,(800,600))
+skyday_surface = pygame.image.load('Paysage-jour.png').convert()
+skyday_surface = pygame.transform.scale(skyday_surface,(800,600))
+skynight_surface = pygame.image.load('Paysage-nuit.png').convert()
+skynight_surface = pygame.transform.scale(skynight_surface,(800,600))
 
 ground_surface = pygame.image.load('Ground.png').convert_alpha()
 ground_surface = pygame.transform.scale(ground_surface,(800,600))
@@ -45,7 +47,7 @@ while True:
         else:
             pl_y_pos+=1
 
-    screen.blit(sky_surface,(0,0))
+    screen.blit(skyday_surface,(0,0))
     screen.blit(ground_surface,(0,100))
     screen.blit(player_surface,(pl_x_pos,pl_y_pos))
     
