@@ -39,17 +39,15 @@ while True:
     #controles des mouvements x y du Player
     pressed = pygame.key.get_pressed()
 
-    #va à droite
-    if pressed[pygame.K_d] or pressed[pygame.K_RIGHT]:
-        player_surface = pygame.image.load('Skin-R.png').convert_alpha()
-        player_surface = pygame.transform.scale(player_surface,(100,100))
-        pl_x_pos+=2
-        
     #va a gauche
     if pressed[pygame.K_a] or pressed[pygame.K_LEFT]:
-        player_surface = pygame.image.load('Skin-L.png').convert_alpha()
-        player_surface = pygame.transform.scale(player_surface,(100,100))
         pl_x_pos-=2
+
+
+    #va à droite
+    if pressed[pygame.K_d] or pressed[pygame.K_RIGHT]:
+        pl_x_pos+=2
+        
 
     #va en haut
     if pressed[pygame.K_w] or pressed[pygame.K_UP]:
