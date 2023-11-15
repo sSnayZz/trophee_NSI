@@ -21,8 +21,6 @@ skynight_surface = pygame.transform.scale(skynight_surface,(800,600))
 ground_surface = pygame.image.load('Sol-jour.png').convert_alpha()
 ground_surface = pygame.transform.scale(ground_surface,(2000,200))
 
-player_rotation=1
-
 #texture du Player
 player_surface = pygame.image.load('Skin-R.png').convert_alpha()
 player_surface = pygame.transform.scale(player_surface,(100,100))
@@ -40,18 +38,6 @@ while True:
         
     #controles des mouvements x y du Player
     pressed = pygame.key.get_pressed()
-
-    if pressed[pygame.K_z]:
-        if player_rotation==1:
-            player_surface = pygame.image.load('Skin-L.png').convert_alpha()
-            player_surface = pygame.transform.scale(player_surface,(100,100))
-            player_rotation=0
-        else:
-            player_surface = pygame.image.load('Skin-R.png').convert_alpha()
-            player_surface = pygame.transform.scale(player_surface,(100,100))
-            player_rotation=1
-            
-            
 
 
     #va a gauche
