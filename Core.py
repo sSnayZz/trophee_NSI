@@ -5,11 +5,14 @@ from sys import exit
 #initiation du module Pygame
 pygame.init()
 #definition de la taille du jeux
-screen = pygame.display.set_mode((800,600))
+display_x,display_y = 640,640
+screen = pygame.display.set_mode((display_x,display_y))
 #titre afficher en haut de la page
 pygame.display.set_caption('Mein Gott')
 #utile pour éviter que la fenetre ne se ferme ///PAS TOUCHEE
 clock = pygame.time.Clock()
+
+
 
 #textures des fonds différents jour/nuit que l'on appelle puis recadre/transforme
 skyday_surface = pygame.image.load('Paysage-jour.png').convert()
@@ -25,9 +28,13 @@ ground_surface = pygame.transform.scale(ground_surface,(2000,200))
 player_surface = pygame.image.load('Skin-R.png').convert_alpha()
 player_surface = pygame.transform.scale(player_surface,(100,100))
 
+
+
 #position x et y du Player
 pl_x_pos = 400
 pl_y_pos = 400
+
+
 
 #Initiation du jeu
 while True:
@@ -35,34 +42,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        
-    #controles des mouvements x y du Player
-    pressed = pygame.key.get_pressed()
 
-
-    #va a gauche
-    if pressed[pygame.K_a] or pressed[pygame.K_LEFT]:
-        pl_x_pos-=2
-
-
-    #va à droite
-    if pressed[pygame.K_d] or pressed[pygame.K_RIGHT]:
-        pl_x_pos+=2
-        
-
-    #va en haut
-    if pressed[pygame.K_w] or pressed[pygame.K_UP]:
-        if pl_y_pos<=360:
-            pl_y_pos=360
-        else:
-            pl_y_pos-=1
-
-    #va en bas
-    if pressed[pygame.K_s] or pressed[pygame.K_DOWN]:
-        if pl_y_pos>=500:
-            pl_y_pos=500
-        else:
-            pl_y_pos+=1
 
     screen.blit(skyday_surface,(0,0))
     screen.blit(ground_surface,(0,450))
