@@ -15,18 +15,18 @@ clock = pygame.time.Clock()
 
 
 #textures des fonds différents jour/nuit que l'on appelle puis recadre/transforme
-skyday_surface = pygame.image.load('Paysage-jour.png').convert()
-skyday_surface = pygame.transform.scale(skyday_surface,(800,600))
-skynight_surface = pygame.image.load('Paysage-nuit.png').convert()
-skynight_surface = pygame.transform.scale(skynight_surface,(800,600))
+#skyday_surface = pygame.image.load('Paysage-jour.png').convert()
+#skyday_surface = pygame.transform.scale(skyday_surface,(800,600))
+#skynight_surface = pygame.image.load('Paysage-nuit.png').convert()
+#skynight_surface = pygame.transform.scale(skynight_surface,(800,600))
 
 #texture du 'sol' pour le Player
-ground_surface = pygame.image.load('Sol-jour.png').convert_alpha()
-ground_surface = pygame.transform.scale(ground_surface,(2000,200))
+#ground_surface = pygame.image.load('Sol-jour.png').convert_alpha()
+#ground_surface = pygame.transform.scale(ground_surface,(2000,200))
 
 #texture du Player
-player_surface = pygame.image.load('Skin-R.png').convert_alpha()
-player_surface = pygame.transform.scale(player_surface,(100,100))
+#player_surface = pygame.image.load('Skin-R.png').convert_alpha()
+#player_surface = pygame.transform.scale(player_surface,(100,100))
 
 
 
