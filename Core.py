@@ -1,7 +1,6 @@
 import pygame 
-from random import randint
 from sys import exit
-
+from button import Button
 
 #initiation du module Pygame
 pygame.init()
@@ -18,11 +17,8 @@ BG = pygame.transform.scale(BG,(display_x,display_y))
 
 #texture du Player
 # player_surface = pygame.image.load('Skin-R.png').convert_alpha()
-# player_surface = pygame.transform.scale(player_surface,(100,100))
+# player_surface = pygame.transform.scale(player_surface,(display_x,display_y))
 
-
-
-#position x et y du Player
 
 
 
@@ -36,9 +32,6 @@ def main_menu():
 
 
         screen.blit(BG,(0,0))
-        # screen.blit(ground_surface,(0,450))
-        
-
         pygame.display.update()
         clock.tick(120)
 
