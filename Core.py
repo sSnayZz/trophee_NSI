@@ -2,10 +2,11 @@ import pygame
 from random import randint
 from sys import exit
 
+
 #initiation du module Pygame
 pygame.init()
 #definition de la taille du jeux
-display_x,display_y = 640,640
+display_x,display_y = 1920/2,1080/2
 screen = pygame.display.set_mode((display_x,display_y))
 #titre afficher en haut de la page
 pygame.display.set_caption('Mein Gott')
@@ -13,7 +14,7 @@ pygame.display.set_caption('Mein Gott')
 clock = pygame.time.Clock()
 
 BG = pygame.image.load('Background.png').convert()
-BG = pygame.transform.scale(BG,(800,600))
+BG = pygame.transform.scale(BG,(display_x,display_y))
 
 #texture du Player
 # player_surface = pygame.image.load('Skin-R.png').convert_alpha()
@@ -22,8 +23,6 @@ BG = pygame.transform.scale(BG,(800,600))
 
 
 #position x et y du Player
-pl_x_pos = 400
-pl_y_pos = 400
 
 
 
@@ -38,7 +37,6 @@ def main_menu():
 
         screen.blit(BG,(0,0))
         # screen.blit(ground_surface,(0,450))
-        # screen.blit(player_surface,(pl_x_pos,pl_y_pos))
         
 
         pygame.display.update()
