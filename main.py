@@ -1,8 +1,5 @@
-import pygame 
-from random import randint
-from sys import exit
+import pygame, sys
 from button import Button
-
 
 pygame.init()
 
