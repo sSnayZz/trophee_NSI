@@ -5,7 +5,7 @@ from sys import exit
 #initiation du module Pygame
 pygame.init()
 #definition de la taille du jeux
-display_x,display_y = 640,640
+display_x,display_y = 192,108
 screen = pygame.display.set_mode((display_x,display_y))
 #titre afficher en haut de la page
 pygame.display.set_caption('Mein Gott')
@@ -15,8 +15,8 @@ clock = pygame.time.Clock()
 
 
 #textures des fonds différents jour/nuit que l'on appelle puis recadre/transforme
-#skyday_surface = pygame.image.load('Paysage-jour.png').convert()
-#skyday_surface = pygame.transform.scale(skyday_surface,(800,600))
+Menu_surface = pygame.image.load('menu.png').convert()
+Menu_surface = pygame.transform.scale(Menu_surface,(192,108))
 
 
 #texture du Player
@@ -39,8 +39,8 @@ while True:
             exit()
 
 
-    screen.blit(skyday_surface,(0,0))
-    screen.blit(player_surface,(pl_x_pos,pl_y_pos))
+    screen.blit(Menu_surface,(0,0))
+    #screen.blit(player_surface,(pl_x_pos,pl_y_pos))
     
 
     pygame.display.update()
