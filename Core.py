@@ -29,17 +29,22 @@ BG = pygame.transform.scale(BG,Size)
 font = pygame.font.Font(None, 36)
 
 # Fonction pour créer un bouton
-def draw_button(x, y, width, height, color, text, text_color):
-    pygame.draw.rect(screen, color, (x, y, width, height))
+def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_pressed):
+    current_color = pressed_color if is_pressed else color
+    pygame.draw.rect(screen, current_color, (x, y, width, height))
     button_text = font.render(text, True, text_color)
     text_rect = button_text.get_rect(center=(x + width / 2, y + height / 2))
     screen.blit(button_text, text_rect)
-    
-button_color=(255,255,255)   
+
+button_color=(255,255,255)  
+button_color_pressed=(200,200,200) 
 button_text_color=(0,0,0)
+
+
 
 #Initiation du jeu
 def main_menu():
+    button_pressed = False
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -48,17 +53,22 @@ def main_menu():
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                  #Vérifier si le clic de la souris est sur le bouton "Jouer"
                 if center_x <= event.pos[0] <= center_x+button_width and button_y_play <= event.pos[1] <= button_y_play+button_height:
+                    button_pressed = True
                     print("Le bouton 'Jouer' a été cliqué! passer a scene suivante")
                 if center_x <= event.pos[0] <= center_x+button_width and button_y_option <= event.pos[1] <= button_y_option+button_height:
+                    button_pressed = True
                     print("Le bouton 'truc' a été cliqué! passer a scene suivante")
                 if center_x <= event.pos[0] <= center_x+button_width and button_y_leave <= event.pos[1] <= button_y_leave+button_height:
+                    button_pressed = True
                     pygame.quit()
                     exit()
+            elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                button_pressed = False
                     
         screen.blit(BG,(0,0))
-        draw_button(center_x, button_y_play, button_width, button_height, button_color, "Jouer", button_text_color)
-        draw_button(center_x, button_y_option, button_width, button_height, button_color, "option", button_text_color)
-        draw_button(center_x, button_y_leave, button_width, button_height, button_color, "quitter", button_text_color)
+        draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_pressed)
+        draw_button(center_x, button_y_option, button_width, button_height, button_color,button_color_pressed, "option", button_text_color, button_pressed)
+        draw_button(center_x, button_y_leave, button_width, button_height, button_color,button_color_pressed, "quitter", button_text_color, button_pressed)
         pygame.display.update()
         clock.tick(120)
 
