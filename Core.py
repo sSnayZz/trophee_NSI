@@ -66,8 +66,13 @@ def main_menu():
                 button_pressed = False
                     
         screen.blit(BG,(0,0))
+        #play
         draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_pressed)
+        
+        #option
         draw_button(center_x, button_y_option, button_width, button_height, button_color,button_color_pressed, "option", button_text_color, button_pressed)
+        
+        #leave
         draw_button(center_x, button_y_leave, button_width, button_height, button_color,button_color_pressed, "quitter", button_text_color, button_pressed)
         pygame.display.update()
         clock.tick(120)
