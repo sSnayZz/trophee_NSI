@@ -17,7 +17,7 @@ pygame.display.set_caption('Mein Gott')
 clock = pygame.time.Clock()
 
 
-
+#expo x^3
 
 BG = pygame.image.load('Background.png').convert()
 BG = pygame.transform.scale(BG,Size)
