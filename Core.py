@@ -18,7 +18,8 @@ clock = pygame.time.Clock()
 
 
 #expo x^3
-
+alpha_main_menu = 0
+fast_screen = (0,0,0,alpha_main_menu)
 BG = pygame.image.load('Background.png').convert()
 BG = pygame.transform.scale(BG,Size)
 
@@ -65,7 +66,9 @@ def main_menu():
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 button_pressed = False
                     
+        screen.blit(fast_screen,(0,0))
         screen.blit(BG,(0,0))
+        alpha_main_menu+=1
         #play
         draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_pressed)
         
