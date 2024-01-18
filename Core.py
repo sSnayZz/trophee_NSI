@@ -40,6 +40,7 @@ def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_p
 
 
 def starting_game():
+    wait_time,count,alpha = 0,1,0
     running=True
     while running is True:
         for event in pygame.event.get():
@@ -47,9 +48,19 @@ def starting_game():
                 pygame.quit()
                 exit()
         
-
+        BBG.set_alpha(alpha)
+        screen.blit(BG,(0,0))
+        screen.blit(BBG,(0,0))
+        if wait_time==100:
+            alpha = 255-int(255 * (count/100)**2)
+            count +=1
+            if alpha <= 0:
+                running = False
+        else:
+            wait_time+=1
+            print(wait_time)
         pygame.display.update()
-        clock.tick(120)
+        clock.tick(30)
 
 #Initiation du jeu
 def main_menu():
