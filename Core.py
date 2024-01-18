@@ -18,12 +18,16 @@ pygame.display.set_caption('The temple of the Idole')
 clock = pygame.time.Clock()
 
 
-starting_color=0
+
 BG = pygame.image.load('Background.png').convert()
 BG = pygame.transform.scale(BG,Size)
 
-def black_starting_screen(starting_color):
-    pygame.draw.rect(screen, (0,0,0,starting_color), (0, 0, Size))
+#for x in range(11):
+#	print(255 * (x/10)**2)
+#fonction utile 
+
+
+
     
 #texture du Player
 # player_surface = pygame.image.load('Skin-R.png').convert_alpha()
