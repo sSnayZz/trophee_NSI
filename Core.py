@@ -16,12 +16,10 @@ pygame.display.set_caption('The Temple Of The Idol')
 #utile pour éviter que la fenetre ne se ferme ///PAS TOUCHEE
 clock = pygame.time.Clock()
 
-
-#expo x^3
-
 BG = pygame.image.load('Background.png').convert()
 BG = pygame.transform.scale(BG,Size)
-
+BBG = pygame.image.load('black_background.png').convert()
+BBG = pygame.transform.scale(BBG,Size)
 #texture du Player
 # player_surface = pygame.image.load('Skin-R.png').convert_alpha()
 # player_surface = pygame.transform.scale(player_surface,(display_x,display_y))
@@ -42,8 +40,6 @@ def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_p
 
 
 def starting_game():
-    rectangle_color=(255,100,100)
-    alpha=255
     running=True
     while running is True:
         for event in pygame.event.get():
@@ -51,22 +47,15 @@ def starting_game():
                 pygame.quit()
                 exit()
         
-        rectangle_surface = pygame.Surface(Size, pygame.SRCALPHA)
-        pygame.draw.rect(screen, rectangle_color + (alpha,), (0, 0, Size[0], Size[1]))
-
-        screen.blit(rectangle_surface, (0, 0))  
-        screen.blit(BG,(0,0))
 
         pygame.display.update()
         clock.tick(120)
 
 #Initiation du jeu
 def main_menu():
-    button_pressed = False
-    running=True
-
     starting_game()
-
+    
+    button_pressed, running = False,True
     while running is True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
