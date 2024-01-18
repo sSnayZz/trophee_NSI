@@ -27,6 +27,9 @@ BG = pygame.transform.scale(BG,Size)
 # player_surface = pygame.transform.scale(player_surface,(display_x,display_y))
 
 font = pygame.font.Font(None, 36)
+button_color=(255,255,255)  
+button_color_pressed=(200,200,200) 
+button_text_color=(0,0,0)
 
 # Fonction pour créer un bouton
 def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_pressed):
@@ -36,20 +39,34 @@ def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_p
     text_rect = button_text.get_rect(center=(x + width / 2, y + height / 2))
     screen.blit(button_text, text_rect)
 
-button_color=(255,255,255)  
-button_color_pressed=(200,200,200) 
-button_text_color=(0,0,0)
-running=True
 
+
+def starting_game():
+    rectangle_color=(255,100,100)
+    alpha=255
+    running=True
+    while running is True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+        
+        rectangle_surface = pygame.Surface(Size, pygame.SRCALPHA)
+        pygame.draw.rect(screen, rectangle_color + (alpha,), (0, 0, Size[0], Size[1]))
+
+        screen.blit(rectangle_surface, (0, 0))  
+        screen.blit(BG,(0,0))
+
+        pygame.display.update()
+        clock.tick(120)
 
 #Initiation du jeu
 def main_menu():
     button_pressed = False
-    while True:
-        pygame.draw.rect(screen, (0,0,0,255), ((0,0)), Size)
+    running=True
 
-        if Run==0:
-            break
+    starting_game()
+
     while running is True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
