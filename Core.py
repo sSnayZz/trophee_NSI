@@ -11,7 +11,7 @@ center_x,center_y = (Size[0] - button_width) // 2,(Size[1] - button_height) // 2
 button_y_play,button_y_option,button_y_leave=center_y//2,center_y,center_y+center_y//2
 
 #titre afficher en haut de la page
-pygame.display.set_caption('Mein Gott')
+pygame.display.set_caption('The temple of the Idole')
 
 #utile pour éviter que la fenetre ne se ferme ///PAS TOUCHEE
 clock = pygame.time.Clock()
