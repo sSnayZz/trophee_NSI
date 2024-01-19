@@ -95,11 +95,11 @@ def starting_menu():
                 exit()
         if count==1:
             wait(1)
-            music_starting_menu.play(-1)
             sfx_rain.play(-1)
             sfx_wind.play(-1)
             sfx_wind.set_volume(1)
             sfx_rain.set_volume(1)
+            music_starting_menu.play(-1)
             music_starting_menu.set_volume(0.5)
         MBG.set_alpha(alpha)
         screen.blit(MBG,(0,0))
