@@ -88,6 +88,8 @@ def starting_menu():
     count,alpha = 1,0
     running=True
     while running is True:
+        sfx_rain.play()
+        sfx_wind.play()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -96,7 +98,7 @@ def starting_menu():
             wait(3)    
         MBG.set_alpha(alpha)
         screen.blit(MBG,(0,0))
-        alpha = int(255 * (count/1000)**2)
+        alpha = int(255 * (count/100)**2)
         count+=1
         if alpha >= 255 and count>=11:
             running = False
