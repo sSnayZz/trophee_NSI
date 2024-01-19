@@ -67,14 +67,18 @@ def starting_game():
                 pygame.quit()
                 exit()
         
+        
+        
+        
+        if count==1:
+            wait(10)
+            
         BBG.set_alpha(alpha)
         screen.blit(BG,(0,0))
         screen.blit(BBG,(0,0))
         
         alpha = 255-int(255 * (count/100)**2)
         
-        if count==1:
-            wait(10)
         
         count+=1
         
