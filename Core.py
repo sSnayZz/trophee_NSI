@@ -51,14 +51,17 @@ def starting_game():
         BBG.set_alpha(alpha)
         screen.blit(BG,(0,0))
         screen.blit(BBG,(0,0))
-        if wait_time==100:
-            alpha = 255-int(255 * (count/100)**2)
-            count +=1
-            if alpha <= 0:
-                running = False
-        else:
+        
+        alpha = 255-int(255 * (count/100)**2)
+            
+        if wait_time!=1000:
             wait_time+=1
             print(wait_time)
+        elif wait_time>=1000:
+            count+=1
+        
+        if alpha <= 0:
+            running = False
         pygame.display.update()
         clock.tick(30)
 
