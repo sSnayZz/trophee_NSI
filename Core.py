@@ -73,16 +73,14 @@ def starting_game():
         if count==1:
             wait(10)
             
-        BBG.set_alpha(alpha)
+        BG.set_alpha(alpha)
         screen.blit(BG,(0,0))
-        screen.blit(BBG,(0,0))
         
-        alpha = 255-int(255 * (count/100)**2)
-        
-        
+        alpha = int(255 * (count/100)**2)
         count+=1
+        print(count,alpha)
         
-        if alpha <= 0:
+        if alpha >= 255 and count>=11:
             running = False
         pygame.display.update()
         clock.tick(30)
