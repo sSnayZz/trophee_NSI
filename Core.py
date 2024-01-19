@@ -3,6 +3,8 @@ from sys import exit
 
 #initiation du module Pygame
 pygame.init()
+pygame.mixer.init()
+
 #definition de la taille du jeux
 Size = (1920/2,1080/2)
 screen = pygame.display.set_mode(Size)
@@ -91,6 +93,11 @@ def main_menu():
     
     button_pressed, running = False,True
     while running is True:
+        
+        pygame.mixer.music.load('track_test.mp3')
+        pygame.mixer.music.set_volume(0.5)
+        pygame.mixer.music.play(-1)
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -105,6 +112,7 @@ def main_menu():
                     print("Le bouton 'truc' a été cliqué! passer a scene suivante")
                 if center_x <= event.pos[0] <= center_x+button_width and button_y_leave <= event.pos[1] <= button_y_leave+button_height:
                     button_pressed = True
+                    pygame.mixer.music.stop()
                     pygame.quit()
                     exit()
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
