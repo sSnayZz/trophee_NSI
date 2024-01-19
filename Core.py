@@ -70,7 +70,7 @@ def starting_game():
                 exit()
         
         if count==1:
-            wait(10)
+            wait(3)
             
         BG.set_alpha(alpha)
         screen.blit(BG,(0,0))
@@ -86,6 +86,7 @@ def starting_game():
 
 #Initiation du jeu
 def main_menu():
+
     starting_game()
     
     button_pressed, running = False,True
@@ -114,6 +115,7 @@ def main_menu():
                     exit()
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 button_pressed = False
+        
         screen.blit(BG,(0,0))
         #play
         draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_pressed)
