@@ -37,10 +37,29 @@ def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_p
     text_rect = button_text.get_rect(center=(x + width / 2, y + height / 2))
     screen.blit(button_text, text_rect)
 
-
+def wait(time):
+    time_wait=0
+    running=True
+    while running is True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+        
+        screen.blit(BBG,(0,0))
+        
+        if time_wait!=time*30:
+            time_wait+=1
+            print(time_wait)
+        else:
+            print('stop')
+            running=False
+        
+        pygame.display.update()
+        clock.tick(30)
 
 def starting_game():
-    wait_time,count,alpha = 0,1,0
+    count,alpha = 1,0
     running=True
     while running is True:
         for event in pygame.event.get():
@@ -53,12 +72,11 @@ def starting_game():
         screen.blit(BBG,(0,0))
         
         alpha = 255-int(255 * (count/100)**2)
-            
-        if wait_time!=1000:
-            wait_time+=1
-            print(wait_time)
-        elif wait_time>=1000:
-            count+=1
+        
+        if count==1:
+            wait(10)
+        
+        count+=1
         
         if alpha <= 0:
             running = False
