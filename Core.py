@@ -7,6 +7,7 @@ pygame.mixer.init()
 
 sfx_wind = pygame.mixer.Sound('fx_wind.mp3')
 sfx_rain = pygame.mixer.Sound('fx_rain.mp3')
+music_starting_menu = pygame.mixer.Sound('track_start.mp3')
 
 #definition de la taille du jeux
 Size = (1920/2,1080/2)
@@ -61,7 +62,7 @@ def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_p
 def wait(time):
     time_wait=0
     running=True
-    while running is True:
+    while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -87,21 +88,25 @@ def wait(time):
 def starting_menu():
     count,alpha = 1,0
     running=True
-    while running is True:
-        sfx_rain.play()
-        sfx_wind.play()
+    while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
         if count==1:
-            wait(3)    
+            wait(1)
+            music_starting_menu.play(-1)
+            sfx_rain.play(-1)
+            sfx_wind.play(-1)
+            sfx_wind.set_volume(1)
+            sfx_rain.set_volume(1)
+            music_starting_menu.set_volume(0.5)
         MBG.set_alpha(alpha)
         screen.blit(MBG,(0,0))
         alpha = int(255 * (count/100)**2)
         count+=1
         if alpha >= 255 and count>=11:
-            running = False
+            running = Falsen
         pygame.display.update()
         clock.tick(30)
 #
@@ -117,7 +122,7 @@ def main_menu():
     starting_menu()
     
     button_Play_pressed,button_Options_pressed,button_Leave_pressed , running = False,False,False,True
-    while running is True:
+    while running:
         
         
         
