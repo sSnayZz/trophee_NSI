@@ -5,8 +5,8 @@ from sys import exit
 pygame.init()
 pygame.mixer.init()
 
-fx_wind = pygame.mixer.Sound('fx_wind.mp3')
-fx_rain = pygame.mixer.Sound('fx_rain.mp3')
+sfx_wind = pygame.mixer.Sound('fx_wind.mp3')
+sfx_rain = pygame.mixer.Sound('fx_rain.mp3')
 
 #definition de la taille du jeux
 Size = (1920/2,1080/2)
