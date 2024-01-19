@@ -5,10 +5,8 @@ from sys import exit
 pygame.init()
 pygame.mixer.init()
 
-pygame.mixer.music.load('track_start.mp3')
-pygame.mixer.music.set_volume(1)
-pygame.mixer.music.play(-1)
-
+fx_wind = pygame.mixer.Sound('fx_wind.mp3')
+fx_rain = pygame.mixer.Sound('fx_rain.mp3')
 
 
 #definition de la taille du jeux
@@ -87,7 +85,7 @@ def wait(time):
 #
 #
 #
-def starting_game():
+def starting_menu():
     count,alpha = 1,0
     running=True
     while running is True:
@@ -95,17 +93,12 @@ def starting_game():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-        
         if count==1:
-            wait(3)
-            
+            wait(3)    
         MBG.set_alpha(alpha)
         screen.blit(MBG,(0,0))
-        
         alpha = int(255 * (count/1000)**2)
         count+=1
-        
-        
         if alpha >= 255 and count>=11:
             running = False
         pygame.display.update()
@@ -120,7 +113,7 @@ def starting_game():
 #Initiation du jeu
 def main_menu():
 
-    starting_game()
+    starting_menu()
     
     button_Play_pressed,button_Options_pressed,button_Leave_pressed , running = False,False,False,True
     while running is True:
