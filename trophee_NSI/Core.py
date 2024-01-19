@@ -27,9 +27,9 @@ MBG = pygame.transform.scale(MBG,Size)
 
 BBG = pygame.image.load('black_background.png').convert()
 BBG = pygame.transform.scale(BBG,Size)
-
-icon = pygame.image.load('game_icon.ico')
-pygame.display.set_icon(icon)
+#texture du Player
+# player_surface = pygame.image.load('Skin-R.png').convert_alpha()
+# player_surface = pygame.transform.scale(player_surface,(display_x,display_y))
 
 font = pygame.font.Font(None, 36)
 button_color=(255,255,255)  
@@ -145,6 +145,7 @@ def main_menu():
                     exit()
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 button_Play_pressed,button_Options_pressed,button_Leave_pressed = False,False,False
+        
         
         screen.blit(MBG,(0,0))
         #play
