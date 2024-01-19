@@ -123,7 +123,7 @@ def main_menu():
 
     starting_game()
     
-    button_pressed, running = False,True
+    button_Play_pressed,button_Options_pressed,button_Leave_pressed , running = False,False,False,True
     while running is True:
         
         
@@ -135,26 +135,26 @@ def main_menu():
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                  #Vérifier si le clic de la souris est sur le bouton "Jouer"
                 if center_x <= event.pos[0] <= center_x+button_width and button_y_play <= event.pos[1] <= button_y_play+button_height:
-                    button_pressed = True
+                    button_Play_pressed = True
                     print("Le bouton 'Jouer' a été cliqué! passer a scene suivante")
                 if center_x <= event.pos[0] <= center_x+button_width and button_y_option <= event.pos[1] <= button_y_option+button_height:
-                    button_pressed = True
+                    button_Options_pressed = True
                     print("Le bouton 'truc' a été cliqué! passer a scene suivante")
                 if center_x <= event.pos[0] <= center_x+button_width and button_y_leave <= event.pos[1] <= button_y_leave+button_height:
-                    button_pressed = True
+                    button_Leave_pressed = True
                     pygame.mixer.music.stop()
                     pygame.quit()
                     exit()
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-                button_pressed = False
+                button_Play_pressed,button_Options_pressed,button_Leave_pressed = False,False,False
         
         screen.blit(BG,(0,0))
         #play
-        draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_pressed)
+        draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_Play_pressed)
         #option
-        draw_button(center_x, button_y_option, button_width, button_height, button_color,button_color_pressed, "options", button_text_color, button_pressed)
+        draw_button(center_x, button_y_option, button_width, button_height, button_color,button_color_pressed, "Options", button_text_color, button_Options_pressed)
         #leave
-        draw_button(center_x, button_y_leave, button_width, button_height, button_color,button_color_pressed, "quitter", button_text_color, button_pressed)
+        draw_button(center_x, button_y_leave, button_width, button_height, button_color,button_color_pressed, "Quitter", button_text_color, button_Leave_pressed)
         pygame.display.update()
         clock.tick(120)
 #
