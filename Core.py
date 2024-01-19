@@ -5,10 +5,10 @@ from sys import exit
 pygame.init()
 pygame.mixer.init()
 
-
-pygame.mixer.music.load('track_test.mp3')
+pygame.mixer.music.load('track_start.mp3')
 pygame.mixer.music.set_volume(1)
 pygame.mixer.music.play(-1)
+
 
 
 #definition de la taille du jeux
@@ -24,8 +24,9 @@ pygame.display.set_caption('The Temple Of The Idol')
 #utile pour éviter que la fenetre ne se ferme ///PAS TOUCHEE
 clock = pygame.time.Clock()
 
-BG = pygame.image.load('Background.png').convert()
-BG = pygame.transform.scale(BG,Size)
+MBG = pygame.image.load('Background.png').convert()
+MBG = pygame.transform.scale(MBG,Size)
+
 BBG = pygame.image.load('black_background.png').convert()
 BBG = pygame.transform.scale(BBG,Size)
 #texture du Player
@@ -73,9 +74,7 @@ def wait(time):
         
         if time_wait!=time*30:
             time_wait+=1
-            print(time_wait)
         else:
-            print('stop')
             running=False
         
         pygame.display.update()
@@ -100,12 +99,12 @@ def starting_game():
         if count==1:
             wait(3)
             
-        BG.set_alpha(alpha)
-        screen.blit(BG,(0,0))
+        MBG.set_alpha(alpha)
+        screen.blit(MBG,(0,0))
         
         alpha = int(255 * (count/100)**2)
         count+=1
-        print(count,alpha)
+        
         
         if alpha >= 255 and count>=11:
             running = False
@@ -148,7 +147,8 @@ def main_menu():
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 button_Play_pressed,button_Options_pressed,button_Leave_pressed = False,False,False
         
-        screen.blit(BG,(0,0))
+        
+        screen.blit(MBG,(0,0))
         #play
         draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_Play_pressed)
         #option
