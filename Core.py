@@ -102,7 +102,7 @@ def starting_game():
         MBG.set_alpha(alpha)
         screen.blit(MBG,(0,0))
         
-        alpha = int(255 * (count/100)**2)
+        alpha = int(255 * (count/1000)**2)
         count+=1
         
         
