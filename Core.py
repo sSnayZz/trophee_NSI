@@ -5,6 +5,12 @@ from sys import exit
 pygame.init()
 pygame.mixer.init()
 
+
+pygame.mixer.music.load('track_test.mp3')
+pygame.mixer.music.set_volume(1)
+pygame.mixer.music.play(-1)
+
+
 #definition de la taille du jeux
 Size = (1920/2,1080/2)
 screen = pygame.display.set_mode(Size)
@@ -31,6 +37,14 @@ button_color=(255,255,255)
 button_color_pressed=(200,200,200) 
 button_text_color=(0,0,0)
 
+#
+#
+#
+#
+#
+#
+#
+#
 # Fonction pour créer un bouton
 def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_pressed):
     current_color = pressed_color if is_pressed else color
@@ -38,7 +52,14 @@ def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_p
     button_text = font.render(text, True, text_color)
     text_rect = button_text.get_rect(center=(x + width / 2, y + height / 2))
     screen.blit(button_text, text_rect)
-
+#
+#
+#
+#
+#
+#
+#
+#
 def wait(time):
     time_wait=0
     running=True
@@ -59,7 +80,14 @@ def wait(time):
         
         pygame.display.update()
         clock.tick(30)
-
+#
+#
+#
+#
+#
+#
+#
+#
 def starting_game():
     count,alpha = 1,0
     running=True
@@ -83,7 +111,13 @@ def starting_game():
             running = False
         pygame.display.update()
         clock.tick(30)
-
+#
+#
+#
+#
+#
+#
+#
 #Initiation du jeu
 def main_menu():
 
@@ -92,9 +126,7 @@ def main_menu():
     button_pressed, running = False,True
     while running is True:
         
-        pygame.mixer.music.load('track_test.mp3')
-        pygame.mixer.music.set_volume(0.5)
-        pygame.mixer.music.play(-1)
+        
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -125,5 +157,12 @@ def main_menu():
         draw_button(center_x, button_y_leave, button_width, button_height, button_color,button_color_pressed, "quitter", button_text_color, button_pressed)
         pygame.display.update()
         clock.tick(120)
-
+#
+#
+#
+#
+#
+#
+#
+#
 main_menu()
