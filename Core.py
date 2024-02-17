@@ -5,7 +5,6 @@ from sys import exit
 pygame.init()
 pygame.mixer.init()
 
-stage=0
 
 sfx_wind = pygame.mixer.Sound('fx_wind.mp3')
 sfx_rain = pygame.mixer.Sound('fx_rain.mp3')
@@ -68,7 +67,7 @@ def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_p
 def play_image(chemin,type_fichier,stage,exceed):
     stage+=1
     if stage>=exceed+1:
-        stage=0
+        stage=1
     return [chemin+str(stage)+type_fichier,stage]
 #
 #
@@ -140,16 +139,23 @@ def starting_menu():
 #
 #
 #
+
 #Initiation du jeu
 def main_menu():
 
     starting_menu()
-    
+            
+    stage=0
     button_Play_pressed,button_Options_pressed,button_Leave_pressed , running = False,False,False,True
     while running:
         
-        
-        
+        img=play_image('test_anim/img_','.png',stage,3)
+        stage=img[1]
+        play_img  = pygame.image.load(img[0]).convert()
+        play_img = pygame.transform.scale(play_img,Size).convert()
+
+
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -174,6 +180,7 @@ def main_menu():
                 button_Play_pressed,button_Options_pressed,button_Leave_pressed = False,False,False
         
         screen.blit(MBG,(0,0))
+        screen.blit(play_img,(0,0))
         #play
         draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_Play_pressed)
         #option
