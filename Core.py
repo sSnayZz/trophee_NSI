@@ -5,6 +5,8 @@ from sys import exit
 pygame.init()
 pygame.mixer.init()
 
+stage=0
+
 sfx_wind = pygame.mixer.Sound('fx_wind.mp3')
 sfx_rain = pygame.mixer.Sound('fx_rain.mp3')
 music_starting_menu = pygame.mixer.Sound('track_start.mp3')
@@ -28,8 +30,8 @@ MBG = pygame.transform.scale(MBG,Size)
 BBG = pygame.image.load('black_background.png').convert()
 BBG = pygame.transform.scale(BBG,Size)
 
-button_style = pygame.image.load('button_background.png').convert()
-button_style = pygame.transform.scale(BBG,Size)
+button_BG = pygame.image.load('button_background.png').convert()
+button_BG = pygame.transform.scale(button_BG,(button_width,button_height))
 
 icon = pygame.image.load('game_icon.ico')
 pygame.display.set_icon(icon)
@@ -51,9 +53,23 @@ button_text_color=(0,0,0)
 def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_pressed):
     current_color = pressed_color if is_pressed else color
     pygame.draw.rect(screen, current_color, (x, y, width, height))
+    screen.blit(button_BG,(x,y))
     button_text = font.render(text, True, text_color)
-    text_rect = button_text.get_rect(center=(x + width / 2, y + height / 2))
+    text_rect = button_text.get_rect(center=(x + width/2, y + height/2))
     screen.blit(button_text, text_rect)
+#
+#
+#
+#
+#
+#
+#
+#
+def play_image(chemin,type_fichier,stage,exceed):
+    stage+=1
+    if stage>=exceed+1:
+        stage=0
+    return [chemin+str(stage)+type_fichier,stage]
 #
 #
 #
@@ -142,14 +158,12 @@ def main_menu():
 
                 if center_x <= event.pos[0] <= center_x+button_width and button_y_play <= event.pos[1] <= button_y_play+button_height:
                     button_Play_pressed = True
-                    print("Le bouton 'Jouer' a été cliqué! passer a scene suivante")
+                    play_menu(main_menu)
 
 
                 if center_x <= event.pos[0] <= center_x+button_width and button_y_option <= event.pos[1] <= button_y_option+button_height:
                     button_Options_pressed = True
-                    print("Le bouton 'option' a été cliqué! passer a scene suivante")
-
-
+                    option_menu(main_menu)
                 if center_x <= event.pos[0] <= center_x+button_width and button_y_leave <= event.pos[1] <= button_y_leave+button_height:
                     button_Leave_pressed = True
                     pygame.mixer.music.stop()
@@ -176,7 +190,7 @@ def main_menu():
 #
 #
 #
-def option_menu():
+def option_menu(come_from):
     running=True
     while running:
 
@@ -184,7 +198,37 @@ def option_menu():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    come_from
+                    running=False
+        screen.blit(BBG,(0,0))
+        pygame.display.update()
+        clock.tick(120)
+#           
 #
+#
+#
+#
+#
+#
+#
+def play_menu(come_from):
+    running=True
+    while running:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    come_from
+                    running=False
+        screen.blit(BBG,(0,0))
+        pygame.display.update()
+        clock.tick(120)
+#           
 #
 #
 #
