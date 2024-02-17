@@ -151,8 +151,8 @@ def main_menu():
         
         img=play_image('test_anim/img_','.png',stage,3)
         stage=img[1]
-        play_img  = pygame.image.load(img[0]).convert()
-        play_img = pygame.transform.scale(play_img,Size).convert()
+        play_img  = pygame.image.load(img[0]).convert_alpha()
+        play_img = pygame.transform.scale(play_img,Size)
 
 
 
