@@ -146,7 +146,7 @@ def main_menu():
     starting_menu()
             
     stage=0
-    button_Play_pressed,button_Options_pressed,button_Leave_pressed , running = False,False,False,True
+    button_Play_pressed, button_Options_pressed, button_Leave_pressed, running = False,False,False,True
     while running:
         
         img=play_image('test_anim/img_','.png',stage,3)
