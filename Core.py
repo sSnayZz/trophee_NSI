@@ -23,10 +23,13 @@ pygame.display.set_caption('The Temple Of The Idol')
 #utile pour éviter que la fenetre ne se ferme ///PAS TOUCHEE
 clock = pygame.time.Clock()
 
-MBG = pygame.image.load('Background.png').convert()
+MBG = pygame.image.load('Background_Main_Menu.png').convert()
 MBG = pygame.transform.scale(MBG,Size)
 
-BBG = pygame.image.load('black_background.png').convert()
+BGB = pygame.image.load('Background_Battle.png').convert()
+BGB = pygame.transform.scale(BGB,Size)
+
+BBG = pygame.image.load('Background_Black.png').convert()
 BBG = pygame.transform.scale(BBG,Size)
 
 button_BG = pygame.image.load('button_background.png').convert()
@@ -179,7 +182,7 @@ def main_menu():
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 button_Play_pressed,button_Options_pressed,button_Leave_pressed = False,False,False
         
-        screen.blit(MBG,(0,0))
+        screen.blit(BGB,(0,0))
         screen.blit(play_img,(0,0))
         #play
         draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_Play_pressed)
