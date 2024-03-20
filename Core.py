@@ -26,7 +26,7 @@ clock = pygame.time.Clock()
 MBG = pygame.image.load('Background_Main_Menu.png').convert()
 MBG = pygame.transform.scale(MBG,Size)
 
-BGB = pygame.image.load('Background_Battle.png').convert()
+BGB = pygame.image.load('Background_Battle.jpg').convert()
 BGB = pygame.transform.scale(BGB,Size)
 
 BBG = pygame.image.load('Background_Black.png').convert()
@@ -107,16 +107,14 @@ def wait(time):
 #
 #
 def starting_menu():
-    count,alpha = 1,0
     running=True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-
         if count==1:
-            wait(3)
+            wait(0)
             sfx_rain.play(-1)
             sfx_wind.play(-1)
             sfx_wind.set_volume(0)
@@ -133,6 +131,9 @@ def starting_menu():
         count+=1
         if alpha>=255 and count>=11:
             running = False
+        
+        count,alpha = 1,0
+       
         pygame.display.update()
         clock.tick(30)
 #
@@ -146,12 +147,12 @@ def starting_menu():
 #Initiation du jeu
 def main_menu():
 
-    starting_menu()
-            
+    #starting_menu()
     stage=0
     button_Play_pressed, button_Options_pressed, button_Leave_pressed, running = False,False,False,True
     while running:
         
+
         img=play_image('test_anim/img_','.png',stage,3)
         stage=img[1]
         play_img  = pygame.image.load(img[0]).convert_alpha()
