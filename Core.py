@@ -43,7 +43,7 @@ center_x,center_y = (Size[0] - button_width) // 2,(Size[1] - button_height) // 2
 button_y_play,button_y_option,button_y_leave=center_y//2,center_y,center_y+center_y//2
 
 
-button_BG = pygame.image.load('button_background.png').convert()
+button_BG = pygame.image.load('Background_Button.jpg').convert()
 button_BG = pygame.transform.scale(button_BG,(button_width,button_height))
 #
 #
@@ -186,7 +186,7 @@ def main_menu():
                 button_Play_pressed,button_Options_pressed,button_Leave_pressed = False,False,False
         
         screen.blit(MBG,(0,0))
-        screen.blit(play_img,(0,0))
+        #screen.blit(play_img,(0,0))
         #play
         draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_Play_pressed)
         #option
