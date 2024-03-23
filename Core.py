@@ -84,7 +84,7 @@ def play_image(chemin,type_fichier,stage,exceed):
     stage+=1
     if stage>=exceed+1:
         stage=1
-    return [chemin+ajout+str(stage)+type_fichier,stage]
+    return [chemin+str(ajout)+str(stage)+type_fichier,stage]
 #
 #
 #
