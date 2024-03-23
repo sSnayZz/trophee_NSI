@@ -13,9 +13,6 @@ music_starting_menu = pygame.mixer.Sound('track_start.mp3')
 #definition de la taille du jeux
 Size = (1920/2,1080/2)
 screen = pygame.display.set_mode(Size)
-button_width,button_height=200,50
-center_x,center_y = (Size[0] - button_width) // 2,(Size[1] - button_height) // 2
-button_y_play,button_y_option,button_y_leave=center_y//2,center_y,center_y+center_y//2
 
 #titre afficher en haut de la page
 pygame.display.set_caption('The Temple Of The Idol')
@@ -23,7 +20,7 @@ pygame.display.set_caption('The Temple Of The Idol')
 #utile pour éviter que la fenetre ne se ferme ///PAS TOUCHEE
 clock = pygame.time.Clock()
 
-MBG = pygame.image.load('Background_Main_Menu.png').convert()
+MBG = pygame.image.load('Background_Main_Menu.jpg').convert()
 MBG = pygame.transform.scale(MBG,Size)
 
 BGB = pygame.image.load('Background_Battle.jpg').convert()
@@ -32,17 +29,22 @@ BGB = pygame.transform.scale(BGB,Size)
 BBG = pygame.image.load('Background_Black.png').convert()
 BBG = pygame.transform.scale(BBG,Size)
 
-button_BG = pygame.image.load('button_background.png').convert()
-button_BG = pygame.transform.scale(button_BG,(button_width,button_height))
 
 icon = pygame.image.load('game_icon.ico')
 pygame.display.set_icon(icon)
 
 font = pygame.font.Font(None, 36)
+
 button_color=(255,255,255)  
 button_color_pressed=(200,200,200) 
 button_text_color=(0,0,0)
+button_width,button_height=200,50
+center_x,center_y = (Size[0] - button_width) // 2,(Size[1] - button_height) // 2
+button_y_play,button_y_option,button_y_leave=center_y//2,center_y,center_y+center_y//2
 
+
+button_BG = pygame.image.load('button_background.png').convert()
+button_BG = pygame.transform.scale(button_BG,(button_width,button_height))
 #
 #
 #
@@ -183,7 +185,7 @@ def main_menu():
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 button_Play_pressed,button_Options_pressed,button_Leave_pressed = False,False,False
         
-        screen.blit(BGB,(0,0))
+        screen.blit(MBG,(0,0))
         screen.blit(play_img,(0,0))
         #play
         draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_Play_pressed)
