@@ -23,6 +23,9 @@ clock = pygame.time.Clock()
 MBG = pygame.image.load('Background_Main_Menu.jpg').convert()
 MBG = pygame.transform.scale(MBG,Size)
 
+MBGF = pygame.image.load('Background_Main_Menu_Flou.jpg').convert()
+MBGF = pygame.transform.scale(MBGF,Size)
+
 BGB = pygame.image.load('Background_Battle.jpg').convert()
 BGB = pygame.transform.scale(BGB,Size)
 
@@ -70,10 +73,18 @@ def draw_button(x, y, width, height, color, pressed_color, text, text_color,is_p
 #
 #
 def play_image(chemin,type_fichier,stage,exceed):
+    ajout=''
+    if stage<=9:
+        ajout='000'
+    elif stage<=99:
+        ajout='00'
+    elif stage<=999:
+        ajout='0'
+
     stage+=1
     if stage>=exceed+1:
         stage=1
-    return [chemin+str(stage)+type_fichier,stage]
+    return [chemin+ajout+str(stage)+type_fichier,stage]
 #
 #
 #
@@ -149,13 +160,20 @@ def starting_menu():
 #Initiation du jeu
 def main_menu():
 
+    
+    sfx_rain.play(-1)
+    sfx_wind.play(-1)
+    sfx_wind.set_volume(0)
+    sfx_rain.set_volume(0)
+    music_starting_menu.play(-1)
+    music_starting_menu.set_volume(0.5)
     #starting_menu()
     stage=0
     button_Play_pressed, button_Options_pressed, button_Leave_pressed, running = False,False,False,True
     while running:
         
 
-        img=play_image('test_anim/img_','.png',stage,3)
+        img=play_image('Animation_Sand/','.png',stage,402)
         stage=img[1]
         play_img  = pygame.image.load(img[0]).convert_alpha()
         play_img = pygame.transform.scale(play_img,Size)
@@ -215,7 +233,7 @@ def option_menu(come_from):
                 if event.key == pygame.K_ESCAPE:
                     come_from
                     running=False
-        screen.blit(BBG,(0,0))
+        screen.blit(MBGF,(0,0))
         pygame.display.update()
         clock.tick(120)
 #           
@@ -238,7 +256,7 @@ def play_menu(come_from):
                 if event.key == pygame.K_ESCAPE:
                     come_from
                     running=False
-        screen.blit(BBG,(0,0))
+        screen.blit(BGB,(0,0))
         pygame.display.update()
         clock.tick(120)
 #           
