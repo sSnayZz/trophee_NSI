@@ -80,10 +80,11 @@ def play_image(chemin,type_fichier,stage,exceed):
         ajout='00'
     elif stage<=999:
         ajout='0'
-
+    
     stage+=1
     if stage>=exceed+1:
-        stage=1
+        stage=0
+
     return [chemin+str(ajout)+str(stage)+type_fichier,stage]
 #
 #
