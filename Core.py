@@ -141,36 +141,13 @@ def wait(time):
 #
 #
 #
-def starting_menu():
-    running=True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
-        if count==1:
-            wait(0)
-            sfx_rain.play(-1)
-            sfx_wind.play(-1)
-            sfx_wind.set_volume(0)
-            sfx_rain.set_volume(0)
-            music_starting_menu.play(-1)
-            music_starting_menu.set_volume(0.5)
+def alpha_intro(intro_count):
+    if intro_count!=100 and intro_count!=None:
+        return intro_count+1
+    else:
+        return
+    
 
-        sfx_rain.set_volume(count/100)
-        sfx_wind.set_volume(count/100)
-        MBG.set_alpha(alpha)
-        screen.blit(MBG,(0,0))
-
-        alpha = int(255 * (count/100)**2)
-        count+=1
-        if alpha>=255 and count>=11:
-            running = False
-        
-        count,alpha = 1,0
-       
-        pygame.display.update()
-        clock.tick(30)
 #
 #
 #
@@ -190,7 +167,7 @@ def main_menu():
 
     
     #starting_menu()
-    stage=0
+    stage,intro_count=0,0
     button_Play_pressed, button_Options_pressed, button_Leave_pressed, running = False,False,False,True
     while running:
         
@@ -226,6 +203,9 @@ def main_menu():
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 button_Play_pressed,button_Options_pressed,button_Leave_pressed = False,False,False
         
+        
+        screen.blit(BBG,(0,0))
+        BBG.set_alpha(alpha_intro(intro_count))
         screen.blit(MBG,(0,0))
         screen.blit(play_img,(0,0))
         #play
