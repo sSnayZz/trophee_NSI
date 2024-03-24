@@ -25,6 +25,9 @@ output_sfx.disable()  # Act as label instead of textbox
 
 
 
+
+
+
 run,state_music,state_sfx=True,True,True
 
 while run:
