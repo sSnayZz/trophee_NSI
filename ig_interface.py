@@ -64,6 +64,8 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((1600, 900))
     pygame.display.set_caption("The Temple of The Idol")
+    icon = pygame.image.load('game_icon.ico')
+    pygame.display.set_icon(icon)
 
     manager = pygame_gui.UIManager(screen.get_size())
 
