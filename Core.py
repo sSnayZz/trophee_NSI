@@ -58,11 +58,11 @@ button_BG = pygame.transform.scale(button_BG,(button_width,button_height))
 #x y tx ty
 toggle_music = Toggle(screen, 750, 110, 30, 20)
 output_music = TextBox(screen, 800, 100, 40, 40, fontSize=20)
-slider_music = Slider(screen, 100, 100, 600, 40, min=0, max=10, step=1)
+slider_music = Slider(screen, 100, 110, 600, 20, min=0, max=10, step=1)
 
 toggle_sfx = Toggle(screen, 750, 210, 30, 20)
 output_sfx = TextBox(screen,800, 200, 40, 40, fontSize=20)
-slider_sfx = Slider(screen,  100, 200, 600, 40, min=0, max=10, step=1)
+slider_sfx = Slider(screen,  100, 210, 600, 20, min=0, max=10, step=1)
 
 output_music.disable()  # Act as label instead of textbox
 output_sfx.disable()  # Act as label instead of textbox
@@ -164,7 +164,6 @@ music_starting_menu.set_volume(0.5)
 def main_menu():
 
     
-    #starting_menu()
     stage,intro_count=0,255
     button_Play_pressed, button_Options_pressed, button_Leave_pressed, running = False,False,False,True
     while running:
@@ -287,6 +286,7 @@ def option_menu(come_from):
 
 
         screen.blit(MBGF,(0,0))
+        
         screen.blit(play_img,(0,0))
         clock.tick(120)
 
@@ -311,8 +311,7 @@ def play_menu(come_from):
                 exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    come_from
-                    running=False
+                    option_menu(play_menu)
         screen.blit(BGB,(0,0))
         pygame.display.update()
         clock.tick(120)
