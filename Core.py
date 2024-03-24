@@ -47,7 +47,8 @@ button_color_pressed=(200,200,200)
 button_text_color=(0,0,0)
 button_width,button_height=200,50
 center_x,center_y = (Size[0] - button_width) // 2,(Size[1] - button_height) // 2
-button_y_play,button_y_option,button_y_leave=center_y//2,center_y,center_y+center_y//2
+button_y_play,button_y_option,button_y_leave = center_y//2,center_y,center_y+center_y//2
+button_back_to_menu_y,button_back_to_menu_x = center_y//4*5, center_x//4
 
 
 button_BG = pygame.image.load('Background_Button.jpg').convert()
@@ -229,7 +230,7 @@ def option_menu(come_from):
     running=True
     
     stage=0
-    run,state_music,state_sfx=True,True,True
+    running,button_Menu_pressed,state_music,state_sfx=True,True,True,False
 
     while running:
 
@@ -241,6 +242,13 @@ def option_menu(come_from):
                 if event.key == pygame.K_ESCAPE:
                     come_from
                     running=False
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                
+                if button_back_to_menu_x <= event.pos[0] <= button_back_to_menu_x+button_width and button_back_to_menu_y <= event.pos[1] <= button_back_to_menu_y+button_height:
+                    button_Menu_pressed = True
+                    main_menu()
+
+
 
         img=play_image('Animation_Sand/','.png',stage,360)
         stage=img[1]
@@ -273,6 +281,11 @@ def option_menu(come_from):
                 if event.key == pygame.K_ESCAPE:
                     come_from
                     running=False
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                
+                if button_back_to_menu_x <= event.pos[0] <= button_back_to_menu_x+button_width and button_back_to_menu_y <= event.pos[1] <= button_back_to_menu_y+button_height:
+                    button_Menu_pressed = True
+                    main_menu()
         
         sfx_wind.set_volume(sfx_volume/10)
         sfx_rain.set_volume(sfx_volume/10)
@@ -282,12 +295,13 @@ def option_menu(come_from):
         events = pygame.event.get()
         screen.blit(MBGF,(0,0))
         screen.blit(play_img,(0,0))
+        
+        draw_button(button_back_to_menu_x, button_back_to_menu_y, button_width, button_height, button_color,button_color_pressed, "Retour Menu", button_text_color, button_Menu_pressed)
 
         clock.tick(120)
 
         pygame_widgets.update(events)
         pygame.display.update()
-
 #           
 #
 #
@@ -298,7 +312,15 @@ def option_menu(come_from):
 #
 def play_menu(come_from):
     running=True
+    
+    stage=0
     while running:
+
+        img=play_image('Animation_Sand/','.png',stage,360)
+        stage=img[1]
+        play_img  = pygame.image.load(img[0]).convert_alpha()
+        play_img.set_alpha(35)
+        play_img = pygame.transform.scale(play_img,Size)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -307,7 +329,9 @@ def play_menu(come_from):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     option_menu(play_menu)
+
         screen.blit(BGB,(0,0))
+        screen.blit(play_img,(0,0))
         pygame.display.update()
         clock.tick(120)
 #           
