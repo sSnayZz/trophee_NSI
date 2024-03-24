@@ -63,7 +63,7 @@ def reposition_cards(cards):
 def main():
     pygame.init()
     screen = pygame.display.set_mode((1600, 900))
-    pygame.display.set_caption("Tomb of The Idol")
+    pygame.display.set_caption("The Temple of The Idol")
 
     manager = pygame_gui.UIManager(screen.get_size())
 
