@@ -1,4 +1,8 @@
 import pygame 
+import pygame_widgets
+from pygame_widgets.slider import Slider
+from pygame_widgets.textbox import TextBox
+from pygame_widgets.toggle import Toggle
 from sys import exit
 
 #initiation du module Pygame
@@ -48,6 +52,22 @@ button_y_play,button_y_option,button_y_leave=center_y//2,center_y,center_y+cente
 
 button_BG = pygame.image.load('Background_Button.jpg').convert()
 button_BG = pygame.transform.scale(button_BG,(button_width,button_height))
+
+
+
+#x y tx ty
+toggle_music = Toggle(screen, 475, 400, 100, 40)
+output_music = TextBox(screen, 750, 100, 40, 40, fontSize=20)
+slider_music = Slider(screen, 100, 100, 600, 40, min=0, max=100, step=1)
+
+toggle_sfx = Toggle(screen, 475, 450, 100, 40)
+slider_sfx = Slider(screen, 100, 200, 800, 40, min=0, max=100, step=1)
+output_sfx = TextBox(screen, 475, 250, 50, 50, fontSize=30)
+
+output_music.disable()  # Act as label instead of textbox
+output_sfx.disable()  # Act as label instead of textbox
+
+
 #
 #
 #
@@ -228,15 +248,10 @@ def option_menu(come_from):
     running=True
     
     stage=0
+    run,state_music,state_sfx=True,True,True
+
     while running:
-
-        img=play_image('Animation_Sand/','.png',stage,360)
-        stage=img[1]
-        play_img  = pygame.image.load(img[0]).convert_alpha()
-        play_img.set_alpha(100)
-        play_img = pygame.transform.scale(play_img,Size)
-
-
+        events = pygame.event.get()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -247,12 +262,42 @@ def option_menu(come_from):
                     come_from
                     running=False
 
+        img=play_image('Animation_Sand/','.png',stage,360)
+        stage=img[1]
+        play_img  = pygame.image.load(img[0]).convert_alpha()
+        play_img.set_alpha(100)
+        play_img = pygame.transform.scale(play_img,Size)
+        
+        output_music.setText(slider_music.getValue())
+        output_sfx.setText(slider_sfx.getValue())
+        
+        state_music = toggle_music.getValue() 
+        state_sfx = toggle_sfx.getValue() 
+
+        if state_music==True:
+            music_volume=0
+        else:
+            music_volume=slider_music.getValue()
+        
+        
+        if state_sfx==True:
+            sfx_volume=0
+        else:
+            sfx_volume=slider_sfx.getValue()
+            
+            
+        print(sfx_volume)
+        print(music_volume)
+        screen.blit(MBG,(0,0))
+
+        pygame_widgets.update(events)
+        pygame.display.update()
+
 
 
 
 
         screen.blit(MBGF,(0,0))
-        
         screen.blit(play_img,(0,0))
         pygame.display.update()
         clock.tick(120)
