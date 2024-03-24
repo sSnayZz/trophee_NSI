@@ -142,12 +142,10 @@ def wait(time):
 #
 #
 def alpha_intro(intro_count):
-    if intro_count!=100 and intro_count!=None:
-        return intro_count+1
+    if intro_count!=None and intro_count>=0 :
+        return intro_count-1
     else:
-        return
-    
-
+        return 0
 #
 #
 #
@@ -167,7 +165,7 @@ def main_menu():
 
     
     #starting_menu()
-    stage,intro_count=0,0
+    stage,intro_count=0,255
     button_Play_pressed, button_Options_pressed, button_Leave_pressed, running = False,False,False,True
     while running:
         
@@ -204,16 +202,20 @@ def main_menu():
                 button_Play_pressed,button_Options_pressed,button_Leave_pressed = False,False,False
         
         
-        screen.blit(BBG,(0,0))
-        BBG.set_alpha(alpha_intro(intro_count))
         screen.blit(MBG,(0,0))
         screen.blit(play_img,(0,0))
+        
         #play
         draw_button(center_x, button_y_play, button_width, button_height, button_color,button_color_pressed, "Jouer", button_text_color, button_Play_pressed)
         #option
         draw_button(center_x, button_y_option, button_width, button_height, button_color,button_color_pressed, "Options", button_text_color, button_Options_pressed)
         #leave
         draw_button(center_x, button_y_leave, button_width, button_height, button_color,button_color_pressed, "Quitter", button_text_color, button_Leave_pressed)
+        
+        screen.blit(BBG,(0,0))
+        BBG.set_alpha(alpha_intro(intro_count))
+        intro_count=alpha_intro(intro_count)
+        
         pygame.display.update()
         clock.tick(120)
 #
@@ -287,7 +289,7 @@ def option_menu(come_from):
         screen.blit(MBGF,(0,0))
         screen.blit(play_img,(0,0))
         clock.tick(120)
-        
+
         pygame_widgets.update(events)
         pygame.display.update()
 
