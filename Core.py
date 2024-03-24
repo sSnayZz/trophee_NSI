@@ -264,8 +264,7 @@ def option_menu(come_from):
             sfx_volume=0
         else:
             sfx_volume=slider_sfx.getValue()
-            
-            
+                
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -278,16 +277,12 @@ def option_menu(come_from):
         sfx_wind.set_volume(sfx_volume/10)
         sfx_rain.set_volume(sfx_volume/10)
         music_starting_menu.set_volume(music_volume/10)
+
         screen.blit(MBG,(0,0))
-
         events = pygame.event.get()
-
-
-
-
         screen.blit(MBGF,(0,0))
-        
         screen.blit(play_img,(0,0))
+
         clock.tick(120)
 
         pygame_widgets.update(events)
