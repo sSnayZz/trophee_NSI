@@ -58,10 +58,10 @@ button_BG = pygame.transform.scale(button_BG,(button_width,button_height))
 #x y tx ty
 toggle_music = Toggle(screen, 475, 400, 100, 40)
 output_music = TextBox(screen, 750, 100, 40, 40, fontSize=20)
-slider_music = Slider(screen, 100, 100, 600, 40, min=0, max=100, step=1)
+slider_music = Slider(screen, 100, 100, 600, 40, min=0, max=10, step=1)
 
 toggle_sfx = Toggle(screen, 475, 450, 100, 40)
-slider_sfx = Slider(screen, 100, 200, 800, 40, min=0, max=100, step=1)
+slider_sfx = Slider(screen, 100, 200, 800, 40, min=0, max=10, step=1)
 output_sfx = TextBox(screen, 475, 250, 50, 50, fontSize=30)
 
 output_music.disable()  # Act as label instead of textbox
@@ -179,16 +179,16 @@ def starting_menu():
 #
 #
 
+sfx_rain.play(-1)
+sfx_wind.play(-1)
+sfx_wind.set_volume(0)
+sfx_rain.set_volume(0)
+music_starting_menu.play(-1)
+music_starting_menu.set_volume(0.5)
 #Initiation du jeu
 def main_menu():
 
     
-    sfx_rain.play(-1)
-    sfx_wind.play(-1)
-    sfx_wind.set_volume(0)
-    sfx_rain.set_volume(0)
-    music_starting_menu.play(-1)
-    music_starting_menu.set_volume(0.5)
     #starting_menu()
     stage=0
     button_Play_pressed, button_Options_pressed, button_Leave_pressed, running = False,False,False,True
@@ -251,7 +251,6 @@ def option_menu(come_from):
     run,state_music,state_sfx=True,True,True
 
     while running:
-        events = pygame.event.get()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -286,21 +285,32 @@ def option_menu(come_from):
             sfx_volume=slider_sfx.getValue()
             
             
-        print(sfx_volume)
-        print(music_volume)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    come_from
+                    running=False
+        
+        sfx_wind.set_volume(sfx_volume/10)
+        sfx_rain.set_volume(sfx_volume/10)
+        music_starting_menu.set_volume(music_volume/10)
         screen.blit(MBG,(0,0))
 
-        pygame_widgets.update(events)
-        pygame.display.update()
-
+        events = pygame.event.get()
 
 
 
 
         screen.blit(MBGF,(0,0))
         screen.blit(play_img,(0,0))
-        pygame.display.update()
         clock.tick(120)
+        
+        pygame_widgets.update(events)
+        pygame.display.update()
+
 #           
 #
 #
