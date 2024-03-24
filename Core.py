@@ -56,13 +56,13 @@ button_BG = pygame.transform.scale(button_BG,(button_width,button_height))
 
 
 #x y tx ty
-toggle_music = Toggle(screen, 475, 400, 100, 40)
-output_music = TextBox(screen, 750, 100, 40, 40, fontSize=20)
+toggle_music = Toggle(screen, 750, 110, 30, 20)
+output_music = TextBox(screen, 800, 100, 40, 40, fontSize=20)
 slider_music = Slider(screen, 100, 100, 600, 40, min=0, max=10, step=1)
 
-toggle_sfx = Toggle(screen, 475, 450, 100, 40)
-slider_sfx = Slider(screen, 100, 200, 800, 40, min=0, max=10, step=1)
-output_sfx = TextBox(screen, 475, 250, 50, 50, fontSize=30)
+toggle_sfx = Toggle(screen, 750, 210, 30, 20)
+output_sfx = TextBox(screen,800, 200, 40, 40, fontSize=20)
+slider_sfx = Slider(screen,  100, 200, 600, 40, min=0, max=10, step=1)
 
 output_music.disable()  # Act as label instead of textbox
 output_sfx.disable()  # Act as label instead of textbox
